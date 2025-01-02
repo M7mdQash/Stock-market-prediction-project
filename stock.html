@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi Market Stock Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">Stock Predictor</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="selector">
+            <label for="company-select">Select a Company:</label>
+            <select id="company-select">
+                <option value="">--Choose a Company--</option>
+                <option value="company1">Company 1</option>
+                <option value="company2">Company 2</option>
+                <option value="company3">Company 3</option>
+                <!-- Add more companies as needed -->
+            </select>
+        </section>
+
+        <section class="graph">
+            <canvas id="stockChart"></canvas>
+        </section>
+
+        <section class="recommendation">
+            <h2>Buy/Sell Recommendation</h2>
+            <div id="recommendation">Select a company to see recommendations.</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Stock Predictor. All rights reserved.</p>
+        <p>Disclaimer: Predictions are for informational purposes only.</p>
+    </footer>
+
+    <script>
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        let stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [], // Dates will go here
+                datasets: [{
+                    label: 'Stock Price',
+                    data: [], // Stock prices will go here
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                    }
+                }
+            }
+        });
+
+        const companySelect = document.getElementById('company-select');
+        const recommendationDiv = document.getElementById('recommendation');
+
+        companySelect.addEventListener('change', () => {
+            const company = companySelect.value;
+
+            if (company) {
+                // Example: Fetch data based on selected company
+                const dummyData = {
+                    dates: ['2024-12-01', '2024-12-02', '2024-12-03'],
+                    prices: [100, 105, 102],
+                    recommendation: 'Buy'
+                };
+
+                // Update chart
+                stockChart.data.labels = dummyData.dates;
+                stockChart.data.datasets[0].data = dummyData.prices;
+                stockChart.update();
+
+                // Update recommendation
+                recommendationDiv.textContent = `Recommendation: ${dummyData.recommendation}`;
+            } else {
+                // Reset chart and recommendation
+                stockChart.data.labels = [];
+                stockChart.data.datasets[0].data = [];
+                stockChart.update();
+
+                recommendationDiv.textContent = 'Select a company to see recommendations.';
+            }
+        });
+    </script>
+</body>
+</html>
