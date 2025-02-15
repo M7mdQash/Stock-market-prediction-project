@@ -17,9 +17,18 @@ df['Date'] = pd.to_datetime(df['Date'])
 df = df.sort_values(by=['Symbol', 'Date'])
 
 # Select relevant columns for analysis
-data = df[['Symbol', 'Date', 'Close', 'Volume Traded']]
+data = df[['Symbol', 'Date', 'Close', 'High', 'Low', 'Change', '% Change', 'Volume Traded', 'Value Traded (SAR)']]
 
-# Normalize the 'Close' prices and 'Volume Traded'
+# Ensure there are no NaN or infinite values in the selected columns
+columns_to_check = ['High', 'Low', 'Change', '% Change', 'Volume Traded', 'Value Traded (SAR)', 'Close']
+
+# Replace NaN values with 0 (or other strategies like using the mean)
+data[columns_to_check] = data[columns_to_check].fillna(0)
+
+# Replace infinity values with 0
+data[columns_to_check] = data[columns_to_check].replace([np.inf, -np.inf], 0)
+
+# Normalize the 'Close' prices, 'High', 'Low', 'Change', '% Change', 'Volume Traded', and 'Value Traded (SAR)'
 scalers = {}
 
 # Function to create sequences
@@ -35,10 +44,14 @@ X_all, y_all = [], []
 
 # Prepare data for all companies
 for symbol in data['Symbol'].unique():
-    symbol_data = data[data['Symbol'] == symbol][['Date', 'Close', 'Volume Traded']].set_index('Date')
+    symbol_data = data[data['Symbol'] == symbol][['Date', 'Close', 'High', 'Low', 'Change', '% Change', 'Volume Traded', 'Value Traded (SAR)']].set_index('Date')
+    
+    # Normalize the selected columns
     scaler = MinMaxScaler(feature_range=(0, 1))
-    data_scaled = scaler.fit_transform(symbol_data.values)
+    data_scaled = scaler.fit_transform(symbol_data[columns_to_check].values)
     scalers[symbol] = scaler
+    
+    # Create sequences for LSTM model
     X, y = create_sequences(data_scaled, sequence_length)
     
     if X.shape[0] > 0:
@@ -145,7 +158,20 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
+#2 Features close and Volume (the file on github)
 #Evaluation Results:
 #Mean Squared Error: 0.0006
 #Mean Absolute Error: 0.0162
 #R-squared: 0.9896
+
+# all the Features (the file rn on the desktop not on the folder and it's name (with all Features)) 
+# Evaluation Results:
+#Mean Squared Error: 0.0006
+#Mean Absolute Error: 0.0124
+#R-squared: 0.9898
+
+#latest (name (with vol) and it's now on the same folder)
+#Evaluation Results:
+#Mean Squared Error: 0.0006
+#Mean Absolute Error: 0.0123
+#R-squared: 0.9901
