@@ -1,4 +1,70 @@
-# Stock-market-prediction-project
+# Stock Market Prediction Project
 
-### Graduation project for computer science bachelors degree of Umm al Qura university
-* main branch right now is the master branch* 
+This project was developed as a graduation requirement for the Bachelor's degree in Computer Science at Umm Al-Qura University. It focuses on predicting stock market trends using machine learning techniques.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributors](#contributors)
+- [License](#license)
+
+## Overview
+
+The Stock Market Prediction Project aims to forecast stock prices by analyzing historical data and applying machine learning models. The project includes both backend and frontend components to provide a complete solution for stock price prediction.
+
+## Features
+
+- Data preprocessing and analysis of historical stock prices
+- Implementation of machine learning models for prediction
+- Web-based user interface for input and visualization
+- Modular code structure for scalability and maintenance
+
+## Project Structure
+
+The repository is organized into the following directories and files:
+
+- `backend/` - Contains the backend logic and machine learning models
+- `src/` - Source code for data processing and model training
+- `Front-end/` - Frontend code for the web interface
+- `Equites_Historical_Adjusted_Prices_Report.csv` - Dataset used for training and testing
+- `stock_price_model_V4.h5` - Trained machine learning model
+- `requirments.txt` - List of required Python packages
+- `index.html`, `newdetails.html`, `welcome_page.html` - HTML files for the web interface
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/M7mdQash/Stock-market-prediction-project.git
+cd Stock-market-prediction-project
+
+2. Install the required Python packages:
+pip install -r requirments.txt
+
+3. Make sure the dataset and trained model file are in the correct folders.
+
+## Usage
+
+1. Start the backend server:
+python backend/app.py
+
+2. Open index.html in your browser to access the user interface.
+
+******** Now you are set to go ****************************
+
+## Contributors
+
+M7mdQash
+tetdp         Email: Abdullahamahli@gmail.com
+feslBM
+QdMe
+
+
+
+## License
+This project is licensed under the MIT License.
