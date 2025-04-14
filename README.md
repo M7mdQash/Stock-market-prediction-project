@@ -37,16 +37,13 @@ The repository is organized into the following directories and files:
 
 ## Installation
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/M7mdQash/Stock-market-prediction-project.git
-cd Stock-market-prediction-project
+1. Clone the repository
 
 2. Install the required Python packages:
 pip install -r requirments.txt
 
 3. Make sure the dataset and trained model file are in the correct folders.
+
 
 ## Usage
 
@@ -59,12 +56,13 @@ python backend/app.py
 
 ## Contributors
 
-M7mdQash
-tetdp         Email: Abdullahamahli@gmail.com
-feslBM
-QdMe
+@M7mdQash
+@tetdp         Email: Abdullahamahli@gmail.com
+@feslBM
+@QdMe
 
 
 
 ## License
 This project is licensed under the MIT License.
+
