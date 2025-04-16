@@ -67,7 +67,6 @@ python backend/app.py
 @M7mdQash
 
 @tetdp  
-Email: Abdullahamahli@gmail.com
 
 @feslBM
 
