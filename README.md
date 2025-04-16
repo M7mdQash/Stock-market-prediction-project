@@ -4,7 +4,7 @@ This project was developed as a graduation requirement for the Bachelor's degree
 
 But before all this why this idea or why this project?
 
-1- We needed something that we can apply on what we learned and learn new things from it.
+1- We needed something that we can apply on it what we learned and learn new things from it.
 
 2- we needed something kinda new to us.
 
